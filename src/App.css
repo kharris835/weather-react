@@ -3,7 +3,7 @@
   /* height: 100vh; */
   /* padding-bottom: 20vh; */
 }
-
-.App .footer {
-  text-align: center;
+.App .container {
+  max-width: 800px;
+  padding: 30px 60px;
 }
