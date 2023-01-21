@@ -1,51 +1,8 @@
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 .container {
+  background-color: aquamarine;
   max-width: 800px;
   padding: 30px 60px;
 }
 .card {
   background: rgba(24, 158, 115, 0.1);
-}
-.main-weather-icon {
-  text-align: right;
-}
-.temperature {
-  font-size: small;
-}
-.future-day {
-  text-align: center;
-}
-.color,
-.temperature {
-  color: rgba(10, 118, 83, 0.8);
-}
-.main-temperature {
-  font-size: 4rem;
-}
-.location-btn {
-  background: rgba(10, 118, 83, 0.8);
-  color: white;
-}
-.footer {
-  font-size: small;
-}
-.units {
-  font-size: 1.2rem;
-  position: relative;
-  top: -30px;
-}
-#weather-description::first-letter {
-  text-transform: capitalize;
-}
-.active {
-  color: black;
-  cursor: default;
-}
-.active:hover {
-  color: black;
-  text-decoration: none;
 }
