@@ -6,7 +6,10 @@ export default function Weather() {
     <div className="Weather">
       <div className="container">
         <div className="card">
-          <div className="card-body">This is my card body</div>
+          <div className="card-body">
+            This is my card body
+            <div className="btn btn-primary">Click Me!</div>
+          </div>
         </div>
       </div>
     </div>
