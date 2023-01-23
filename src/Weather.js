@@ -4,12 +4,13 @@ import "./Weather.css";
 
 export default function Weather() {
   const [input, setInput] = useState("");
-  const [weatherData, setweatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
 
   function showCurrentWeather(response) {
     console.log(response.data);
-    setweatherData({
-      temperature: response.data.main.temp,
+    setWeatherData({
+      city: response.data.name,
+      temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
@@ -75,13 +76,19 @@ export default function Weather() {
             </div>
             <div className="col-4">
               <h2 className="mb-0">
-                <span className="current-temperature">45</span>
+                <span className="current-temperature">
+                  {weatherData?.temperature || "45"}
+                </span>
                 <span className="units">ºF | ºC</span>
               </h2>
-              <h1 className="current-city mb-0">Boulder</h1>
+              <h1 className="current-city mb-0 text-capitalize">
+                {weatherData?.city || "Boulder"}
+              </h1>
               <ul className="list-unstyled mb-0">
                 <li>Friday 6:09 PM</li>
-                <li>Sunny</li>
+                <li className="text-capitalize">
+                  {weatherData?.description || "Sunny"}
+                </li>
               </ul>
             </div>
             <div className="col-4">
