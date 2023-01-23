@@ -1,9 +1,13 @@
 .App {
   align-items: center;
-  /* height: 100vh; */
-  /* padding-bottom: 20vh; */
+  font-family: "Raleway", sans-serif;
+  /* height: 100vh;
+  padding-bottom: 20vh; */
 }
 .App .container {
   max-width: 800px;
   padding: 30px 60px;
+}
+.App footer {
+  font-size: 13px;
 }

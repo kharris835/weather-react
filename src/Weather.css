@@ -1,3 +1,33 @@
+:root {
+  --secondary-color: rgba(9, 61, 45, 0.8);
+}
+
 .Weather .card {
   background: rgba(24, 158, 115, 0.1);
+}
+
+.Weather .current-temperature {
+  font-size: 72px;
+  font-weight: 600;
+}
+
+.Weather .current-city {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.Weather .units {
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  top: -27px;
+}
+
+.Weather .location-btn {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.Weather .secondary-color {
+  color: var(--secondary-color);
 }
