@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
 
@@ -71,43 +71,7 @@ export default function Weather() {
               </div>
             </div>
           </form>
-          <div className="row align-items-center">
-            <div className="col-4 align-self-center text-end">
-              <img src="images/sun.svg" alt="Sunny" width="120px" />
-            </div>
-            <div className="col-4">
-              <h2 className="mb-0">
-                <span className="current-temperature">
-                  {weatherData?.temperature || "58"}
-                </span>
-                <span className="units">ºF | ºC</span>
-              </h2>
-              <h1 className="current-city mb-0 text-capitalize">
-                {weatherData?.city || "San Diego"}
-              </h1>
-              <ul className="list-unstyled mb-0">
-                <li>
-                  <FormattedDate date={weatherData?.date || new Date()} />
-                </li>
-                <li className="text-capitalize">
-                  {weatherData?.description || "Sunny"}
-                </li>
-              </ul>
-            </div>
-            <div className="col-4">
-              <ul className="list-unstyled">
-                <li>
-                  Humidity: <span className="secondary-color">82%</span>
-                </li>
-                <li>
-                  Precipitation: <span className="secondary-color">1%</span>
-                </li>
-                <li>
-                  Wind: <span className="secondary-color">5mph</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <WeatherInfo data={weatherData} />
         </div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+.WeatherInfo .current-temperature {
+  font-size: 72px;
+  font-weight: 600;
+}
+
+.WeatherInfo .current-city {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.WeatherInfo .units {
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  top: -27px;
+}
