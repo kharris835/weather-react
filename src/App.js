@@ -14,7 +14,7 @@ export default function App() {
           >
             Open-source code
           </a>{" "}
-          by Kelsie Harris (written in React w/ ☕️)
+          by Kelsie Harris (powered by React w/ ☕️)
         </footer>
       </div>
     </div>
