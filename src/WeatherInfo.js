@@ -21,6 +21,7 @@ export default function WeatherInfo(props) {
           </h1>
           <ul className="list-unstyled mb-0">
             <li>
+              {/* <FormattedDate date={props.data?.date || new Date()} /> */}
               <FormattedDate date={props.data?.date || new Date()} />
             </li>
             <li className="text-capitalize">
