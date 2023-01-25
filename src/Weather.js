@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  const [input, setInput] = useState("");
+const apiKey = "b5b56bf4012bed80cd4ce11f2dda7ff2";
+const units = "imperial";
+
+export default function Weather({ defaultCity = "San Diego" }) {
+  const [input, setInput] = useState(defaultCity);
   const [weatherData, setWeatherData] = useState(null);
 
   function showCurrentWeather(response) {
@@ -15,8 +18,9 @@ export default function Weather() {
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      // precipitation: Math.round(forecastResponse.data.daily[0].pop * 100),
+      wind: Math.round(response.data.wind.speed),
+      icon: response.data.weather[0].icon,
     });
   }
 
@@ -26,16 +30,24 @@ export default function Weather() {
     if (input.length === 0) {
       return;
     }
-    const apiKey = "b5b56bf4012bed80cd4ce11f2dda7ff2";
-    const units = "imperial";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
 
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showCurrentWeather);
   }
 
   function updateInput(event) {
     console.log(event.target.value);
     setInput(event.target.value);
+  }
+
+  useEffect(() => {
+    // Runs on initial render
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(showCurrentWeather);
+  }, []);
+
+  if (!weatherData) {
+    return null;
   }
 
   return (
@@ -51,6 +63,7 @@ export default function Weather() {
                   className="w-100 h-100"
                   autoFocus={true}
                   onChange={updateInput}
+                  value={input}
                 />
               </div>
               <div className="col-5 text-center">
