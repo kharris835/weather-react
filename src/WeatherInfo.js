@@ -14,10 +14,6 @@ export default function WeatherInfo(props) {
         <div className="col-4">
           <h2 className="mb-0">
             <TemperatureConversion fahrenheit={props.data.temperature} />
-            {/* <span className="current-temperature">
-              {props.data.temperature}
-            </span> */}
-            {/* <span className="units">ºF | ºC</span> */}
           </h2>
           <h1 className="current-city mb-0 text-capitalize">
             {props.data.city}
