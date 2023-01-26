@@ -6,8 +6,8 @@ import "./Weather.css";
 const apiKey = "b5b56bf4012bed80cd4ce11f2dda7ff2";
 const units = "imperial";
 
-export default function Weather({ defaultCity = "San Diego" }) {
-  const [input, setInput] = useState(defaultCity);
+export default function Weather({ city }) {
+  const [input, setInput] = useState(city);
   const [weatherData, setWeatherData] = useState(null);
 
   function showCurrentWeather(response) {
@@ -36,15 +36,14 @@ export default function Weather({ defaultCity = "San Diego" }) {
   }
 
   function updateInput(event) {
-    console.log(event.target.value);
     setInput(event.target.value);
   }
 
   useEffect(() => {
     // Runs on initial render
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showCurrentWeather);
-  }, []);
+  }, [city]);
 
   if (!weatherData) {
     return null;
