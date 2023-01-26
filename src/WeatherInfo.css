@@ -7,10 +7,3 @@
   font-size: 36px;
   font-weight: 600;
 }
-
-.WeatherInfo .units {
-  font-size: 20px;
-  font-weight: 600;
-  position: relative;
-  top: -27px;
-}

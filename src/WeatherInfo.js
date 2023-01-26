@@ -1,7 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
-
+import TemperatureConversion from "./TemperatureConversion";
 import "./WeatherInfo.css";
 
 export default function WeatherInfo(props) {
@@ -13,10 +13,11 @@ export default function WeatherInfo(props) {
         </div>
         <div className="col-4">
           <h2 className="mb-0">
-            <span className="current-temperature">
+            <TemperatureConversion fahrenheit={props.data.temperature} />
+            {/* <span className="current-temperature">
               {props.data.temperature}
-            </span>
-            <span className="units">ºF | ºC</span>
+            </span> */}
+            {/* <span className="units">ºF | ºC</span> */}
           </h2>
           <h1 className="current-city mb-0 text-capitalize">
             {props.data.city}
