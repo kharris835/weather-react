@@ -14,6 +14,7 @@ export default function Weather({ city }) {
   function showCurrentWeather(response) {
     console.log(response.data);
     setWeatherData({
+      coordinates: response.data.coord,
       city: response.data.name,
       temperature: Math.round(response.data.main.temp),
       date: new Date(response.data.dt * 1000),
@@ -85,7 +86,7 @@ export default function Weather({ city }) {
             </div>
           </form>
           <WeatherInfo data={weatherData} />
-          <Forecast />
+          <Forecast coordinates={weatherData.coordinates} />
         </div>
       </div>
     </div>
