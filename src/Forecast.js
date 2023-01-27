@@ -4,8 +4,14 @@ import "./Forecast.css";
 
 export default function Forecast({ data }) {
   console.log(data);
-  const temperatureMax = Math.round(data.daily[0].temp.max);
-  const temperatureMin = Math.round(data.daily[0].temp.min);
+  function temperatureMax(dailyForecast) {
+    const temperatureMax = Math.round(dailyForecast.temp.max);
+    return temperatureMax;
+  }
+  function temperatureMin(dailyForecast) {
+    const temperatureMin = Math.round(dailyForecast.temp.min);
+    return temperatureMin;
+  }
 
   function day(dailyForecast) {
     let date = new Date(dailyForecast.dt * 1000);
@@ -25,8 +31,12 @@ export default function Forecast({ data }) {
               <div className="day pb-2">{day(dailyForecast)}</div>
               <WeatherIcon code={dailyForecast.weather[0].icon} size={42} />
               <div className="pt-1">
-                <span className="temperature-max">{temperatureMax}º</span>
-                <span className="temperature-min ms-2">{temperatureMin}º</span>
+                <span className="temperature-max">
+                  {temperatureMax(dailyForecast)}º
+                </span>
+                <span className="temperature-min ms-2">
+                  {temperatureMin(dailyForecast)}º
+                </span>
               </div>
             </div>
           );
