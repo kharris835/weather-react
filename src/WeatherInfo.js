@@ -1,10 +1,10 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
-import WeatherIcon from "./WeatherIcon";
 import TemperatureConversion from "./TemperatureConversion";
+import WeatherIcon from "./WeatherIcon";
 import "./WeatherInfo.css";
 
-export default function WeatherInfo({ data }) {
+export default function WeatherInfo({ data, unit, setUnit }) {
   return (
     <div className="WeatherInfo">
       <div className="row align-items-center">
@@ -13,7 +13,7 @@ export default function WeatherInfo({ data }) {
         </div>
         <div className="col-4">
           <h2 className="mb-0">
-            <TemperatureConversion fahrenheit={data.temperature} />
+            <TemperatureConversion fahrenheit={data.temperature} unit={unit} setUnit={setUnit}/>
           </h2>
           <h1 className="current-city mb-0 text-capitalize">{data.city}</h1>
           <ul className="list-unstyled mb-0">
@@ -32,7 +32,6 @@ export default function WeatherInfo({ data }) {
             <li>
               Precipitation:{" "}
               <span className="secondary-color">
-                {/* pull precipitation data from API */}
                 {data.precipitation}%
               </span>
             </li>

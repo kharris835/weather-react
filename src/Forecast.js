@@ -2,7 +2,14 @@ import React from "react";
 import WeatherIcon from "./WeatherIcon";
 import "./Forecast.css";
 
-export default function Forecast({ data }) {
+function tempForUnit(temp, unit) {
+  if (unit === "celcius") {
+    return Math.round(((temp - 32) * 5) / 9);
+  }
+  return temp;
+}
+
+export default function Forecast({ data, unit }) {
   console.log(data);
   function temperatureMax(dailyForecast) {
     const temperatureMax = Math.round(dailyForecast.temp.max);
@@ -32,10 +39,10 @@ export default function Forecast({ data }) {
               <WeatherIcon code={dailyForecast.weather[0].icon} size={42} />
               <div className="pt-1">
                 <span className="temperature-max">
-                  {temperatureMax(dailyForecast)}º
+                  {tempForUnit(temperatureMax(dailyForecast), unit)}º
                 </span>
                 <span className="temperature-min ms-2">
-                  {temperatureMin(dailyForecast)}º
+                  {tempForUnit(temperatureMin(dailyForecast), unit)}º
                 </span>
               </div>
             </div>

@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TemperatureConversion.css";
 
 export default function TemperatureConversion(props) {
-  const [unit, setUnit] = useState("fahrenheit");
-
   function showCelcius(event) {
     event.preventDefault();
-    setUnit("celcius");
+    props.setUnit("celcius");
   }
   function showFahrenheit(event) {
     event.preventDefault();
-    setUnit("fahrenheit");
+    props.setUnit("fahrenheit");
   }
 
   function celcius() {
     return ((props.fahrenheit - 32) * 5) / 9;
   }
 
-  if (unit === "fahrenheit") {
+  if (props.unit === "fahrenheit") {
     return (
       <div className="TemperatureConversion">
         <span className="current-temperature">{props.fahrenheit}</span>

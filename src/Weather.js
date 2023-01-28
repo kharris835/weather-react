@@ -11,6 +11,7 @@ export default function Weather({ city }) {
   const [input, setInput] = useState(city);
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
+  const [unit, setUnit] = useState("fahrenheit");
 
   function showCurrentWeather(response) {
     const forecastAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&exclude=current,minutely,alerts&appid=${apiKey}&units=${units}`;
@@ -88,8 +89,8 @@ export default function Weather({ city }) {
               </div>
             </div>
           </form>
-          <WeatherInfo data={weatherData} />
-          <Forecast data={forecastData} />
+          <WeatherInfo data={weatherData} unit={unit} setUnit={setUnit} />
+          <Forecast data={forecastData} unit={unit} />
         </div>
       </div>
     </div>
