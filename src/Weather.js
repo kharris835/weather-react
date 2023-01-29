@@ -14,6 +14,13 @@ export default function Weather({ city }) {
   const [unit, setUnit] = useState("fahrenheit");
   const [errorMessage, setErrorMessage] = useState(null);
 
+  function getLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      let locationAPI = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
+      axios.get(locationAPI).then(showCurrentWeather);
+    });
+  }
+
   function showCurrentWeather(response) {
     const forecastAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&exclude=current,minutely,alerts&appid=${apiKey}&units=${units}`;
     axios.get(forecastAPI).then(function showForecastData(forecastResponse) {
@@ -33,11 +40,13 @@ export default function Weather({ city }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     if (input.length === 0) {
       return;
     }
+    currentWeather();
+  }
 
+  function currentWeather() {
     const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
     axios
       .get(currentWeatherAPI)
@@ -92,6 +101,7 @@ export default function Weather({ city }) {
                   type="submit"
                   value="Current Location"
                   className="btn location-btn"
+                  onClick={getLocation}
                 >
                   Current Location
                 </button>
