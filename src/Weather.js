@@ -51,7 +51,7 @@ export default function Weather({ city }) {
   }
 
   function updateInput(event) {
-    setInput(event.target.value);
+    setInput(event.target.value.trim());
   }
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function Weather({ city }) {
       <div className="card">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            <div className="row mt-2 mb-5">
+            <div className="row mt-2 mb-4">
               <div className="col-7">
                 <input
                   type="search"
