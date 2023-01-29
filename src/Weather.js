@@ -47,7 +47,7 @@ export default function Weather({ city }) {
   }
 
   function currentWeather() {
-    const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
+    const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${input.trim()}&appid=${apiKey}&units=${units}`;
     axios
       .get(currentWeatherAPI)
       .then(showCurrentWeather)
@@ -60,7 +60,7 @@ export default function Weather({ city }) {
   }
 
   function updateInput(event) {
-    setInput(event.target.value.trim());
+    setInput(event.target.value);
   }
 
   useEffect(() => {
