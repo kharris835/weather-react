@@ -4,7 +4,7 @@ import Forecast from "./Forecast";
 import axios from "axios";
 import "./Weather.css";
 
-const apiKey = "b5b56bf4012bed80cd4ce11f2dda7ff2";
+const apiKey = "3fdc8cfbf2d6fa0116c9ae92d3df4f79";
 const units = "imperial";
 
 export default function Weather({ city }) {
@@ -12,6 +12,7 @@ export default function Weather({ city }) {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [unit, setUnit] = useState("fahrenheit");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   function showCurrentWeather(response) {
     const forecastAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&exclude=current,minutely,alerts&appid=${apiKey}&units=${units}`;
@@ -38,7 +39,15 @@ export default function Weather({ city }) {
     }
 
     const currentWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${units}`;
-    axios.get(currentWeatherAPI).then(showCurrentWeather);
+    axios
+      .get(currentWeatherAPI)
+      .then(showCurrentWeather)
+      .catch(function () {
+        setErrorMessage("Whoops! Double check your city is valid.");
+        setTimeout(function () {
+          setErrorMessage(errorMessage);
+        }, 2500);
+      });
   }
 
   function updateInput(event) {
@@ -86,6 +95,12 @@ export default function Weather({ city }) {
                 >
                   Current Location
                 </button>
+              </div>
+              <div
+                className="ms-1 mt-1 fst-italic text-danger"
+                style={{ minHeight: 24 }}
+              >
+                {errorMessage}
               </div>
             </div>
           </form>

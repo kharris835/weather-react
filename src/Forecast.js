@@ -32,9 +32,9 @@ export default function Forecast({ data, unit }) {
   return (
     <div className="Forecast text-center mt-4">
       <div className="row">
-        {data.daily.slice(0, 6).map(function (dailyForecast) {
+        {data.daily.slice(0, 6).map(function (dailyForecast, index) {
           return (
-            <div className="col">
+            <div className="col" key={index}>
               <div className="day pb-2">{day(dailyForecast)}</div>
               <WeatherIcon code={dailyForecast.weather[0].icon} size={42} />
               <div className="pt-1">
