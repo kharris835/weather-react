@@ -14,7 +14,15 @@ export default function App() {
           >
             Open-source code
           </a>{" "}
-          by Kelsie Harris (powered by React w/ ☕️)
+          by{" "}
+          <a
+            href="https://spontaneous-croquembouche-c44b06.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Kelsie Harris
+          </a>{" "}
+          (powered by React w/ ☕️)
         </footer>
       </div>
     </div>
